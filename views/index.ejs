@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
 </head>
 <body class="w-full max-w-4xl m-auto">
   <div class="bg-white py-16 px-4 overflow-hidden lg:py-24">
@@ -40,8 +41,10 @@
           <div>
             <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
             <div class="mt-1">
-              <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+              <input type="text" name="first-name" id="first-name" autocomplete="given-name" 
+                class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md border border-red-500">
             </div>
+            <p class="text-red-500 text-xs italic">Please fill out this field.</p>
           </div>
           <div>
             <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
@@ -49,6 +52,7 @@
               <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
             </div>
           </div>
+          
           <div class="sm:col-span-2">
             <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
             <div class="mt-1">
@@ -61,6 +65,7 @@
               <input id="email" name="email" type="email" autocomplete="email" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
             </div>
           </div>
+          
           <div class="sm:col-span-2">
             <label for="phone-number" class="block text-sm font-medium text-gray-700">Phone Number</label>
             <div class="mt-1 relative rounded-md shadow-sm">
@@ -75,12 +80,36 @@
               <input type="text" name="phone-number" id="phone-number" autocomplete="tel" class="py-3 px-4 block w-full pl-20 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" placeholder="+1 (555) 987-6543">
             </div>
           </div>
+
+          <div>
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+              State
+            </label>
+            <div class="relative">
+              <select class="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                <option>New Mexico</option>
+                <option>Missouri</option>
+                <option>Texas</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
+            <div class="mt-1">
+              <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+            </div>
+          </div>
+          
           <div class="sm:col-span-2">
             <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
             <div class="mt-1">
               <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md"></textarea>
             </div>
           </div>
+
           <div class="sm:col-span-2">
             <div class="flex items-start">
               <div class="flex-shrink-0">
@@ -101,15 +130,20 @@
               </div>
             </div>
           </div>
+
           <div class="sm:col-span-2">
-            <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Gửi phiếu dự tuyển</button>
+            <button type="button"
+              onclick="showToast()"
+              class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Gửi phiếu dự tuyển
+            </button>
           </div>
         </form>
       </div>
     </div>
   </div>
   
-<form>
+<form action="#">
     <div class="flex flex-wrap -mx-3 mb-6">
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
@@ -166,13 +200,17 @@
       </div>
     </div>
   </form>
-  <!-- <button onclick="showPdf()"></button> -->
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script>
     function showPdf(){
 
+    }
+    function showToast(){
+      toastr.options.positionClass = 'toast-bottom-right';
+      toastr.success("Tạo phiếu yêu cầu thành công");
     }
 </script>
 </html>

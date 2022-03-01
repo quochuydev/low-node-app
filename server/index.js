@@ -16,6 +16,9 @@ const Server = {
       .then(() => console.log("connect success"))
       .catch(() => console.log("connect failed"));
 
+    require("./routes/file")({ app });
+    require("./routes/profile")({ app });
+
     app.get("/", function (req, res) {
       res.render("index");
     });
@@ -23,9 +26,6 @@ const Server = {
     app.get("/admin/profiles", function (req, res) {
       res.render("admin/profiles");
     });
-
-    require("./routes/file")({ app });
-    require("./routes/profile")({ app });
 
     app.listen(port, () => {
       console.log(`server start at ${port}`);
