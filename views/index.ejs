@@ -470,14 +470,5 @@
       // toastr.options.positionClass = "toast-bottom-right";
       toastr.success("Tạo phiếu yêu cầu thành công");
     }
-
-    function getProfileList() {
-      $.ajax({
-        url: "/bo/profiles",
-        method: "get",
-      }).done((res) => console.log(res));
-    }
-
-    getProfileList();
   </script>
 </html>
