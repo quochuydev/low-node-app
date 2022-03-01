@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 const Server = {
   start: async () => {
@@ -18,6 +18,10 @@ const Server = {
 
     app.get("/", function (req, res) {
       res.render("index");
+    });
+
+    app.get("/admin/profiles", function (req, res) {
+      res.render("admin/profiles");
     });
 
     require("./routes/file")({ app });
