@@ -13,7 +13,7 @@ module.exports = ({ app }) => {
         email: "admin@gmail.com",
       };
 
-      res.redirect("/");
+      res.redirect("/admin/profiles");
     } catch (error) {
       res.status(500).send();
     }

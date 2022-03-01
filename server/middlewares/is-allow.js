@@ -1,10 +1,11 @@
 const isAllow = (permission) => {
   return function (req, res, next) {
-    console.log("user:", req.session?.user, permission);
+    const sess = req.session;
+    console.log("user:", sess?.user, permission);
 
-    if (req.session?.user) {
+    if (sess?.user) {
       res.locals = {
-        user: req.session?.user,
+        user: sess?.user,
       };
 
       return next();
