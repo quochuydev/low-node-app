@@ -25,7 +25,6 @@ module.exports = ({ app }) => {
 
     doc.fontSize(13).text("Here is some vector graphics...", 100, 100);
 
-    // Draw a triangle
     doc
       .save()
       .moveTo(100, 150)

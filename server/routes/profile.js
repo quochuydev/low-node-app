@@ -1,5 +1,5 @@
 module.exports = ({ app }) => {
-  app.get("/profiles", (req, res) => {
+  app.get("/bo/profiles", (req, res) => {
     res.send();
   });
 };
